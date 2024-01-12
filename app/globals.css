@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
+body{
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.35s ease 0s;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.004) 1px 1px 1px;
+  margin-right: 0px !important;
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,12 +30,230 @@
   }
 }
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+ 
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+ 
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+ 
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+ 
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+ 
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+ 
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+ 
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+ 
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+ 
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+ 
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+ 
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(247, 247, 247);
+}
+.main-content{
+
+  width: calc(100%);
+  max-width: calc(100%);
+
+}
+
+
+.main-wrapper-content{
+height: 100vh;
+width: 100vw;
+}
+
+
+.inner-content-icon{
+  background-color: #FF6A49;
+  border-radius: 9px;
+  padding: 5px;
+}
+.inner-content-icon:before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width:50%;
+  height: 3px;
+  background-color: #FF6A49;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 8px 8px 0 0;
+  @apply shadow shadow-[#FF6A49]/10;
+}
+.inner-content-icon svg{
+  width: 100%;
+  height: 100%;
+  stroke: #fff;
+  width: 23px;
+  height: 23px;
+}
+.inner-content-icon svg path{
+  stroke: #fff;
+}
+
+.by-items-aside.active{
+  border: none;
+  background-color: #e5e5e580;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counter button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.counter input {
+  width: 50px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.content-bg-fff.pd-25-35 {
+  padding: 25px 35px;
+}
+
+
+.content-bg-fff {
+  background: #fff;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+.header-collapse{
+  transition: all 0.35s ease 0s;
+}
+.collapse-active[data-state="open"] .header-collapse{
+
+  background: #6c5ce78a;
+  color: #fff;
+}
+.collapse-active[data-state="open"] .content-collapse{
+  
+}
+.collapse-active[data-state="open"] [data-state="open"] {
+  border-radius: 18px;
+} 
+.header-collapse{
+  border-radius: 18px;
+}
+
+.ready-order{
+  background: #00cec9;
+  color: #fff
+}
+
+.pending-order{
+  background: #feca57;
+  color: #fff
+}
+
+.served-order{
+  background: #5f27cd;
+  color: #fff
+}
+
+.cancelled-order{
+  background: #ff6b6b;
+  color: #fff
+}
+.completed-order{
+  background: #1dd1a1;
+  color: #fff
+}
+
+
+.text-emerald-500 {
+  --tw-text-opacity: 1;
+  color: rgb(16 185 129/var(--tw-text-opacity));
+}
+
+.bg-emerald-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 185 129/var(--tw-bg-opacity));
+}
+
+
+
+.text-rose-500 {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94/var(--tw-text-opacity));
+}
+
+
+.bg-rose-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94/var(--tw-bg-opacity));
+}
+
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
+}
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
+}
+
+.data-\[state\=checked\]\:text-primary-foreground[data-state=checked] svg{
+  display: none;
 }
