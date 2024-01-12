@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 export default async function OrderLast() {
   const [ordersLast, setOrdersLast] = useState([]);
-  const URL_API = 'http://localhost:3001/api/'
+  const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
   const StatusColors = {
     "Ready": "ready-order",
     "Pending": "pending-order",

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Payment, columns } from "./columns"
 import { DataTable } from "./data-table"
 async function getAllMenus() {
-  const URL_API = 'http://localhost:3001/api/'
+  const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
   try {
       const response = await fetch(`${URL_API}orders/allOrders`, {
         cache: 'no-store'

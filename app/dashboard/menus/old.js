@@ -12,7 +12,7 @@ import { UserNav } from "./components/user-nav"
 
 
 async function getAllMenus () {
-    const URL_API = 'http://localhost:3001/api/'
+    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
     try {
         const response = await fetch(`${URL_API}menus`);
         if (!response.ok) throw new Error(response.statusText);

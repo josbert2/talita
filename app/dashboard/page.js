@@ -48,7 +48,7 @@ const repositories = ["@radix-ui/primitives", "@radix-ui/colors", "@stitches/rea
     
 export default function Page(){
     const { data: session, status } = useSession()
-    const URL_API = 'http://localhost:3001/api/'
+    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [totalPrice, setTotalPrice] = useState(0);

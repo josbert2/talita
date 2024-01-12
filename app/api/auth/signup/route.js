@@ -18,7 +18,7 @@ export async function POST(request) {
 
 
 
-    const findUser = await fetch(`http://localhost:3001/api/user?email=${email}&fullname=${nombre}&hashedPassword=${hashedPassword}&login=${login}`);
+    const findUser = await fetch(`https://talita-backend-dev-production.up.railway.app/api/user?email=${email}&fullname=${nombre}&hashedPassword=${hashedPassword}&login=${login}`);
     const user = await findUser.json();
 
     if (user.message === "User already exists"){
@@ -33,7 +33,7 @@ export async function POST(request) {
     });
 
 
-    /*const createUser = await fetch(`http://localhost:3001/api/user?email=${email}`, {
+    /*const createUser = await fetch(`https://talita-backend-dev-production.up.railway.app/api/user?email=${email}`, {
         method: "GET",
     });
 

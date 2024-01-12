@@ -111,7 +111,7 @@ export default function CartPage() {
     
 
     try {
-      const URL = 'http://localhost:3001/api/cliente'
+      const URL = 'https://talita-backend-dev-production.up.railway.app/api/cliente'
       const response = await fetch(URL, {
         method: 'POST',
         headers: {
@@ -172,7 +172,7 @@ export default function CartPage() {
     }
     
 
-    const URL = 'http://localhost:3001/api/addOrder'
+    const URL = 'https://talita-backend-dev-production.up.railway.app/api/addOrder'
     const response = await fetch(URL, {
       method: 'POST',
       headers: {

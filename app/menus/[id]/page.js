@@ -27,7 +27,7 @@ export default function Page({ params }) {
 
   useEffect(() => {
     const getMenu = async () => {
-      const URL_API = 'http://localhost:3001/api/'
+      const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
       try {
           const response = await fetch(`${URL_API}menus/${ID}`);
           if (!response.ok) throw new Error(response.statusText);

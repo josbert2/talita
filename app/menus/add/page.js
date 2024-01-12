@@ -52,7 +52,7 @@ export default function Page() {
     const { toast } = useToast()
 
     const getAllCategoriasWithSelect = async () => {
-      const URL_API = 'http://localhost:3001/api/'
+      const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
     
       try {
           const response = await fetch(`${URL_API}categorias`);
@@ -83,7 +83,7 @@ export default function Page() {
 
     const handlerSubmit = async  (e) => {
         e.preventDefault()
-        const URL_API = 'http://localhost:3001/api/'
+        const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
         
         const formData = new FormData(e.currentTarget)
         const nombre = formData.get('nombre')

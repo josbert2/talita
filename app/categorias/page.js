@@ -27,7 +27,7 @@ export default function Page() {
 
 
   const getAllCategorias = async (search = '') => {
-    const URL_API = 'http://localhost:3001/api/'
+    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
     try {
         const response = await fetch(`${URL_API}categorias`);
         if (!response.ok) throw new Error(response.statusText);
@@ -41,7 +41,7 @@ export default function Page() {
   }
 
   const getCategoriaPerMenus = async (search = '') => {
-    const URL_API = 'http://localhost:3001/api/'
+    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
     try {
         const response = await fetch(`${URL_API}categorias/perMenus`);
         if (!response.ok) throw new Error(response.statusText);
@@ -59,7 +59,7 @@ export default function Page() {
   }
 
   const deleteCategory = async (id) => {
-    const URL_API = 'http://localhost:3001/api/'
+    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
     const data = await fetch(`${URL_API}categorias/${id}`, {
         method: 'DELETE'
     })
