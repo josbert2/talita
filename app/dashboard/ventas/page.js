@@ -49,7 +49,7 @@ export default function Page() {
 
 
   const getAllSales = async () => {
-    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
+    const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
     const date = new Date();
     const currentMonth = date.getMonth() + 1; // +1 porque getMonth() devuelve meses de 0-11
     const currentYear = date.getFullYear();

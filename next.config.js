@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['res.cloudinary.com', 'localhost', 'as1.ftcdn.net']
+        domains: ['res.cloudinary.com', 'localhost', 'as1.ftcdn.net', 'via.placeholder.com']
     },
     typescript: {
         // !! WARN !!

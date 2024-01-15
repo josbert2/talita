@@ -29,8 +29,8 @@ export type Payment = {
     apellido: string
     amount: number
     status: "pending" | "processing" | "success" | "failed"
-    email: string
     total_price: number,
+    method_payment: string,
     rut: string,
   }
 
@@ -77,7 +77,7 @@ export type Payment = {
       accessorKey: "status",
       header: "Status",
       cell: ({ row }) => {
-        console.log(row)
+        
         const Statuses = {
           Cancelled: "bg-[#ff5c5c94]",
           Completed: "bg-[#10ac84]",
@@ -125,20 +125,27 @@ export type Payment = {
         )
       },
     },
-    /*{
-      accessorKey: "email",
+    
+    {
+      accessorKey: "method_payment",
       header: ({ column }) => {
         return (
           <Button
             variant="ghost"
+            className="px-0"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Email
+            Tipo de pago
             <ArrowUpDown className="w-4 h-4 ml-2" />
           </Button>
         )
       },
-    }, */
+      cell: ({ row }) => {
+        const method_payment = row.getValue("method_payment") as string
+      
+        return <div className="font-medium text-left">{method_payment}</div>
+      },
+    },
     /*{
       accessorKey: "amount",
       header: () => <div className="text-right">Amount</div>,
@@ -154,12 +161,23 @@ export type Payment = {
     }, */
     {
       accessorKey: "total_price",
-      header: () => <div className="text-right">Total</div>,
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            className="px-0"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Total
+            <ArrowUpDown className="w-4 h-4 ml-2" />
+          </Button>
+        )
+      },
       cell: ({ row }) => {
         const amount = parseFloat(row.getValue("total_price"))
       
    
-        return <div className="font-medium text-right">{formatPriceChile(amount )}</div>
+        return <div className="font-medium text-left">{formatPriceChile(amount )}</div>
       },
     },
     {

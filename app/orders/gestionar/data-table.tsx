@@ -73,16 +73,17 @@ export function DataTable<TData, TValue>({
       rowSelection,
     },
   })
- 
+  console.log(table)
   return (
     <div className="px-4">
       <div className="flex items-center py-4">
         <div className="flex items-center w-full ">
+        
             <Input
-              placeholder="Filter emails..."
-              value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+              placeholder="filtra por menu"
+              value={(table.getColumn("method_payment")?.getFilterValue() as string) ?? ""}
               onChange={(event) =>
-                table.getColumn("email")?.setFilterValue(event.target.value)
+                table.getColumn("method_payment")?.setFilterValue(event.target.value)
               }
               className="max-w-sm"
             />

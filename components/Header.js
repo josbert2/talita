@@ -44,7 +44,7 @@ export default function Header() {
 
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b  supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
+        <header className="sticky top-0 z-50 w-full border-b supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
             <div className="container flex items-center px-20 h-14">
                 <div className="hidden mr-4 md:flex">
                     <a className="flex items-center mr-6 space-x-2" href="/">
@@ -85,7 +85,7 @@ export default function Header() {
                         <Link  activeClassName="active" className='transition-colors hover:text-foreground/80 text-foreground/60' href="/categorias">
                             Categorías
                         </Link>
-                        <Link  activeClassName="active" className='transition-colors hover:text-foreground/80 text-foreground/60' href="/orders">
+                        <Link  activeClassName="active" className='transition-colors hover:text-foreground/80 text-foreground/60' href="/orders/gestionar">
                             Ordenes
                         </Link>
                         <Link  activeClassName="active" className='transition-colors hover:text-foreground/80 text-foreground/60' href="/caja">

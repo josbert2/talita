@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 
 async function getTransaccion(id) {
-    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
+    const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
     const ID = id;
     try {
     

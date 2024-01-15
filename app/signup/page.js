@@ -21,7 +21,7 @@ function Page() {
 
         console.log(nombre, email, password)
 
-        const URL_API = 'https://talita-alpha.vercel.app/api/'
+        const URL_API = process.env.URL_AUTH_API_PROJECT || 'http://localhost:3000/api/'
 
         try {
             const response = await fetch(URL_API + 'auth/signup', {

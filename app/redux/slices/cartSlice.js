@@ -33,7 +33,7 @@ const cartSlice = createSlice({
   
       const existItem = state.cartItems.find((x) => x.id === item.id)
 
-    
+      console.log(existItem)
       if (existItem) {
         state.cartItems = state.cartItems.map((x) =>
           x.id === existItem.id ? item : x
@@ -69,6 +69,8 @@ const cartSlice = createSlice({
           Number(state.taxPrice)
       )
       Cookies.set('cart', JSON.stringify(state))
+
+  
     
     },
 

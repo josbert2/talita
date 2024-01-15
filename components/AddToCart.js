@@ -22,7 +22,7 @@ export default function AddToCart({
   const { data: session, status } = useSession()
 
   const createItemCart = async (id_user, id_menu, qty) => {
-    const URL_API = 'http://localhost:3001/api/'
+    const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
     try {
     
         const response = await fetch(`${URL_API}cart`, {
@@ -55,6 +55,7 @@ export default function AddToCart({
           newQty = existItem.qty + 1
       }
     }
+
     
 
 

@@ -1,5 +1,7 @@
+'use client'
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { useEffect, useState } from "react"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -80,3 +82,29 @@ export function getCurrentDateTime() {
   const options = { timeZone: 'America/Santiago', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
   return currentDate.toLocaleDateString('es-ES', options);
 }
+
+
+export function useDebounce(value: string, delay: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+      const handler = setTimeout(() => {
+          setDebouncedValue(value);
+      }, delay);
+
+      return () => {
+          clearTimeout(handler);
+      };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+
+export function formatDate(date: string) {
+  const fecha = new Date(date);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return fecha.toLocaleDateString('es-ES', options as any);
+
+}
+

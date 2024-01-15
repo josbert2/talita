@@ -9,7 +9,7 @@ import { taskSchema } from "./data/schema"
 
 
 async function getAllMenus () {
-    const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
+    const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
     try {
         const response = await fetch(`${URL_API}orders/allOrders`, {
           cache: 'no-store'

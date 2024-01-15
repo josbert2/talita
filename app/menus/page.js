@@ -1,43 +1,34 @@
 'use client'
+
 import React, { useEffect, useState } from 'react'
 import debounce from 'lodash/debounce';
-
 import CartMenu from '../../components/CardMenus'
-
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
-import Image from 'next/image'
 import Loading from '../loading'
-import { Badge } from "@/components/ui/badge"
 import SvgIcon from './components/Icon'
 import { Input } from "@/components/ui/input"
+import { useDebounce } from "@/lib/utils"
+
+
 
 
 
 const Page = () => {
 
-    const [menus, setMenus] = useState([])
     const [categorias, setCategorias] = useState([])
     const [loading, setLoading] = useState(true);
-
-
-
-
-    // search
-    const [searchTerm, setSearchTerm] = useState("");
     const [filteredMenus, setFilteredMenus] = useState([]);
-
-    const handleSearch = () => {
-      debouncedGetMenus(searchTerm);
-    }
+    const [search, setSearch] = useState('')
+    const debouncedSearch = useDebounce(search, 500)
 
     const getMenus = async (search = '') => {
-      const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
+      const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
       try {
           const response = await fetch(`${URL_API}menus?q=${search}`);
           if (!response.ok) throw new Error(response.statusText);
           const data = await response.json();
-          console.log(data)
+          
           setFilteredMenus(data);
           setLoading(false)
       }
@@ -47,28 +38,31 @@ const Page = () => {
     }
 
     const getAllCategorias = async (search = '') => {
-      const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
+      const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
       try {
           const response = await fetch(`${URL_API}categorias`);
           if (!response.ok) throw new Error(response.statusText);
           const data = await response.json();
-          console.log(data)
+      
           setCategorias(data); 
       } catch (error) {
 
       }
     }
 
-    const debouncedGetMenus = debounce(getMenus, 300);
-
     useEffect(() => {
-      debouncedGetMenus(searchTerm);
-      getAllCategorias();
-    }, [searchTerm, debouncedGetMenus])
-
+      console.log(debouncedSearch)
+      if (debouncedSearch) {
+        getMenus(debouncedSearch)
+      } else {
+        getMenus()
+      }
+      getAllCategorias()
+    }, [search, debouncedSearch])
+    
     return (
+      <>
         <div className='container'>
-            
             <div class="grid grid-cols-12 gap-10 mt-10">
             
               <div class="col-span-3">
@@ -94,22 +88,16 @@ const Page = () => {
                   <div className="flex items-center w-full max-w-sm space-x-2">
                     <div class="bg-white">
                     <Input type="text"  placeholder="Buscar menus" 
-                      value={searchTerm}
+                      value={search}
                       onChange={(e) => {
-                          setSearchTerm(e.target.value);
+                          setSearch(e.target.value);
                       }}
                     />
                     </div>
-                    <Button type="submit" onClick={handleSearch}>Buscar</Button>
+                    <Button type="submit" >Buscar</Button>
                   </div>
                   <div class="ml-auto flex items-center">
-                    <Button variant="secondary" className='mr-2'> 
-                        <Link href="/menus/gestionar">
-                          <div class="flex items-center">
-                            Gestionar menu
-                          </div>
-                        </Link>
-                      </Button>
+                  
                     <Button> 
                       <Link href="/menus/add">
                         <div class="flex items-center">
@@ -137,6 +125,7 @@ const Page = () => {
 
             </div>
         </div>
+      </>
     )
 }
 

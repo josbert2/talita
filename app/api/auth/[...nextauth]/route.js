@@ -12,7 +12,7 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credencials) {
-                const API_URL = 'https://talita-backend-dev-production.up.railway.app/api/'
+                const API_URL =  process.env.URL_API || 'http://localhost:3001/api/';
                 
             
                 const response = await fetch(API_URL + 'credentials', {

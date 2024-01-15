@@ -23,7 +23,7 @@ export default function Page() {
 
     const handlerSubmit = async  (e) => {
         setIsLoading(true)
-        const URL_API = 'https://talita-backend-dev-production.up.railway.app/api/'
+        const URL_API =  process.env.URL_API || 'http://localhost:3001/api/';
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         const nombre = formData.get('nombre')
