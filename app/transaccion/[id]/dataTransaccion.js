@@ -53,7 +53,7 @@ const ComponentTransaccion = ({ id }) => {
   const dataId = id;
   const data = use(getTransaccion(id));
   const { total_price, id_user, id_order, order_date } = data || {};
-
+  console.log(data )
 
   return (
     <>
@@ -80,7 +80,7 @@ const ComponentTransaccion = ({ id }) => {
                   <div class="bg-white rounded-lg shadow-lg w-full px-4 py-4">
                       <div class="px-10 pt-4 pb-4 border-b">
                         <div class="font-bold text-2xl flex items-center">
-                          Pedido n°: {data.orders[0].id}
+                          Pedido n°: {data.orders[0].order_id}
                           <div class="ml-auto flex flex-col">
                             Precio total: {formatToPesosChilenos(data.orders[0].total_price)}
                             <span class="flex items-center  text-xs mt-2 font-light ml-auto">

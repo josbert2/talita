@@ -564,7 +564,7 @@ export default function Page(){
                             
                                     <ScrollArea className="w-full px-2 py-2 rounded-md h-[500px]">
                                         <div class="flex flex-col gap-4">
-                                        {console.log(OrderStatus(filteredOrders))}        
+                                        {console.log(filteredOrders)}        
                                         {OrderStatus(filteredOrders) ? (
                                             <>
                                                 {orderToday(filteredOrders) > 0 ? (

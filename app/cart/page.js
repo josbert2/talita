@@ -139,6 +139,20 @@ export default function CartPage() {
     setCliente({})
   }
 
+  function formatearFecha(fecha) {
+    const anio = fecha.getFullYear();
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // getMonth() devuelve un rango de 0-11
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const horas = fecha.getHours().toString().padStart(2, '0');
+    const minutos = fecha.getMinutes().toString().padStart(2, '0');
+    const segundos = fecha.getSeconds().toString().padStart(2, '0');
+
+    return `${anio}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+  }
+  const fechaActual = new Date();
+  const fechaFormateada = formatearFecha(fechaActual);
+
+
   const handlerSubmit =  async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -180,7 +194,7 @@ export default function CartPage() {
       },
       body: JSON.stringify({
         "table_number": 5,
-        "order_date": createAtWithHours,
+        "order_date": fechaFormateada,
         "status": "Pending",
         "total_price": itemsPrice,
         "special_instructions": "Sin sal",
@@ -192,6 +206,19 @@ export default function CartPage() {
         itemsPrice
       })
     })
+
+    const URL2 = 'http://localhost:3001/api/caja/updateCajaTransaccion'
+    const response2 = await fetch(URL2, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "amount": itemsPrice,
+      })
+    })
+
+    const data2 = await response2.json()
 
 
     
