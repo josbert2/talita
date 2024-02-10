@@ -9,7 +9,7 @@ import { Card, Grid, Metric, Text,
   TableBody,
   BadgeDelta
  } from "@tremor/react";
-
+ import { formatToPesosChilenos } from "@/helpers/utils"
 
 
 
@@ -94,9 +94,32 @@ const salesPeople = [
   },
 ];
 
+
+
 export default function Page({ className }) {
 
+  const [cajas, setCajas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  const fetchCajas = async () => {
+    try {
+        const response = await fetch('http://localhost:3001/api/caja/caja-abierta'); // Reemplaza con la URL de tu API
+        if (!response.ok) {
+            throw new Error('Algo salió mal');
+        }
+        const data = await response.json();
+        setCajas(data);
+        console.log(data);
+    } catch (error) {
+        setError(error.message);
+    }
+    setIsLoading(false);
+  };
 
+  useEffect(() => {
+      fetchCajas();
+  }, []);
 
   return (
     <div class="container">
@@ -111,12 +134,12 @@ export default function Page({ className }) {
         </div>
       </div>
         <Grid numItemsSm={2} numItemsLg={3} className="gap-6">
-          {categories.map((item) => (
-            <Card key={item.title}>
-              <Text>{item.title}</Text>
-              <Metric>{item.metric}</Metric>
+        
+            <Card>
+              <Text>{cajas.nombre}</Text>
+              <Metric>{formatToPesosChilenos(cajas.saldo_inicial)}</Metric>
             </Card>
-          ))}
+    
         </Grid>
         <Card>
       <Table>
